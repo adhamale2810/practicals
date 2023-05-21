@@ -1,3 +1,9 @@
+/*
+export OMP_NUM_THREADS=4
+g++ -fopenmp bubblesort.cpp
+./a.out
+*/
+
 #include <iostream>
 #include <omp.h>
 using namespace std;
