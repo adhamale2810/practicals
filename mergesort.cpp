@@ -62,11 +62,15 @@ vector<int> parallelMergeSort(vector<int>& arr, int low, int high) {
         return ba;
     }
     int mid = (low + high) / 2;
-    #pragma omp fhalf
+#pragma omp parallel sections
+{
+    #pragma omp section
     vector<int> fhalf = parallelMergeSort(arr, low, mid);
-    #pragma omp shalf
+    #pragma omp section
     vector<int> shalf = parallelMergeSort(arr, mid + 1, high);
-    vector<int> full = merge(fhalf, shalf);
+}
+vector<int> full = merge(fhalf, shalf);
+l
     return full;
 }
 
