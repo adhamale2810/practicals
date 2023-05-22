@@ -25,9 +25,10 @@ void sequentialSort(int arr[], int size){
 }
 
 void parallelSort(int arr[], int size){
+    #pragma omp parallel for
     for(int i=0;i<size-1;i++){
-        for(int j=0;j<size-i-1;j++){
-            #pragma omp
+        #pragma omp parallel for
+        for(int j=0;j<size-i-1;j++){
             if(arr[j]>arr[j+1]){
                 swap(arr[j],arr[j+1]);
             }
